@@ -28,9 +28,9 @@ public class MonsterSelectorService implements SelectorService<GameSetup> {
 	@Override
 	public void select(GameSetup game) {
 		//Get ANIMALS
-		game.setAnimals(this.drawMonsters(MonsterLevelEnum.ANIMAL, GameSetup.NUMBER_OF_ANIMAL_MONSTERS));
+		game.setAnimals(this.drawMonsters(MonsterLevelEnum.ANIMAL, GameSetup.NUMBER_OF_ANIMALS));
 		//Get BEASTS
-		game.setBeasts(this.drawMonsters(MonsterLevelEnum.BESTIAL, GameSetup.NUMBER_OF_BESTIAL_MONSTERS));
+		game.setBeasts(this.drawMonsters(MonsterLevelEnum.BESTIAL, GameSetup.NUMBER_OF_BEASTS));
 		//Get DRAGON
 		game.setDragon(this.drawMonsters(MonsterLevelEnum.MYTHICAL, GameSetup.NUMBER_OF_MYTHICAL_MONSTERS).get(0));
 	}
@@ -41,8 +41,12 @@ public class MonsterSelectorService implements SelectorService<GameSetup> {
 		
 		for(int i = 0; i < quantity; i++) {
 			MonsterCard monster = (MonsterCard) RandomnessUtil.drawCard(available);
-			this.actionSelectorService.select(monster);
 			
+			if (monster == null) {
+				break;
+			}
+			
+			this.actionSelectorService.select(monster);
 			selected.add(monster);
 		}
 		

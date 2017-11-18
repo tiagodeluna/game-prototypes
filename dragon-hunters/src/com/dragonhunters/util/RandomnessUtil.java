@@ -33,6 +33,10 @@ public class RandomnessUtil {
 	
 	@SuppressWarnings("rawtypes")
 	public static Card drawCard(List cards) {
+		if (cards == null || cards.isEmpty()) {
+			return null;
+		}
+		
 		int index = ThreadLocalRandom.current().nextInt(0, cards.size());
 		return (Card) cards.remove(index);
 	}

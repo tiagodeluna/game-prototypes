@@ -26,5 +26,14 @@ public abstract class Card {
 		this.name = name;
 	}
 
-	public abstract CardTypeEnum getType(); 
+	/**
+	 * Returns the specific card type. 
+	 * @return The type of the card
+	 */
+	public abstract CardTypeEnum getType();
+	
+	@Override
+	public String toString() {
+		return this.name;
+	}
 }

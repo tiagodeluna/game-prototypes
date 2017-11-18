@@ -6,13 +6,13 @@ import com.dragonhunters.model.card.monster.MonsterCard;
 
 public class GameSetup {
 
-	public static final int NUMBER_OF_ANIMAL_MONSTERS = 2;
-	public static final int NUMBER_OF_BESTIAL_MONSTERS = 2;
+	public static final int NUMBER_OF_ANIMALS = 2;
+	public static final int NUMBER_OF_BEASTS = 2;
 	public static final int NUMBER_OF_MYTHICAL_MONSTERS = 1;
 	
-	List<MonsterCard> animals;
-	List<MonsterCard> beasts;
-	MonsterCard dragon;
+	private List<MonsterCard> animals;
+	private List<MonsterCard> beasts;
+	private MonsterCard dragon;
 	
 	public GameSetup() {
 		super();
