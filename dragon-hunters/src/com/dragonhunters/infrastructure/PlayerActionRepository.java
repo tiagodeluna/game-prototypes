@@ -6,7 +6,7 @@ import java.util.List;
 import com.dragonhunters.model.card.action.ActionCard;
 import com.dragonhunters.model.card.action.ActionTypeEnum;
 
-public class PlayerActionRepository implements Repository<ActionCard> {
+public class PlayerActionRepository implements Repository<ActionCard, ActionTypeEnum> {
 
 	private List<ActionCard> elements;
 	
@@ -35,6 +35,12 @@ public class PlayerActionRepository implements Repository<ActionCard> {
 				.filter(a -> a.getId() == id)
 				.findFirst()
 				.orElse(null);
+	}
+
+	@Override
+	public List<ActionCard> findBySelector(ActionTypeEnum selector) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -1,5 +1,8 @@
 package com.dragonhunters.model.card.monster;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.dragonhunters.model.card.Card;
@@ -11,9 +14,11 @@ public class MonsterCard extends Card {
 	private int attack;
 	private int defense;
 	private Map<MonsterTypeEnum, Integer> setup;
+	private List<MonsterActionCard> movements;
 	
 	public MonsterCard(long id, String name, MonsterLevelEnum level, int attack, int defense, Map<MonsterTypeEnum, Integer> setup) {
 		super(id, name);
+		this.movements = new ArrayList<>();
 		this.level = level;
 		this.attack = attack;
 		this.defense = defense;
@@ -22,6 +27,8 @@ public class MonsterCard extends Card {
 
 	public MonsterCard(long id, String name, MonsterLevelEnum level, int attack, int defense) {
 		super(id, name);
+		this.setup = new HashMap<>();
+		this.movements = new ArrayList<>();
 		this.level = level;
 		this.attack = attack;
 		this.defense = defense;
@@ -62,6 +69,14 @@ public class MonsterCard extends Card {
 
 	public void setSetup(Map<MonsterTypeEnum, Integer> setup) {
 		this.setup = setup;
+	}
+
+	public List<MonsterActionCard> getMovements() {
+		return movements;
+	}
+
+	public void setMovements(List<MonsterActionCard> movements) {
+		this.movements = movements;
 	}
 
 }

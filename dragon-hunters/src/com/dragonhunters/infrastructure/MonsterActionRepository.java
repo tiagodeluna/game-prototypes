@@ -1,18 +1,22 @@
 package com.dragonhunters.infrastructure;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Component;
 
 import com.dragonhunters.model.card.action.ActionTypeEnum;
 import com.dragonhunters.model.card.monster.MonsterActionCard;
 import com.dragonhunters.model.card.monster.MonsterTypeEnum;
 
-public class MonsterActionRepository implements Repository<MonsterActionCard> {
+@Component
+public class MonsterActionRepository implements Repository<MonsterActionCard, ActionTypeEnum> {
 
 	private List<MonsterActionCard> elements;
-
-	@Override
-	public List<MonsterActionCard> findAll() {
+	
+	public MonsterActionRepository() {
 		this.elements = new ArrayList<>();
 		this.elements.add(new MonsterActionCard(1, "Blow", MonsterTypeEnum.GENERAL, new ActionTypeEnum[]{ActionTypeEnum.CONTUSIVE}, 0));
 		this.elements.add(new MonsterActionCard(2, "Block", MonsterTypeEnum.GENERAL, new ActionTypeEnum[]{ActionTypeEnum.BLOCKING}, 0));
@@ -43,14 +47,26 @@ public class MonsterActionRepository implements Repository<MonsterActionCard> {
 		this.elements.add(new MonsterActionCard(22, "Creepers attack", MonsterTypeEnum.PLANT, new ActionTypeEnum[]{ActionTypeEnum.RANGE, ActionTypeEnum.PARALYZING}, 1));
 		this.elements.add(new MonsterActionCard(23, "Poisonous Thorns", MonsterTypeEnum.PLANT, new ActionTypeEnum[]{ActionTypeEnum.PIERCING, ActionTypeEnum.POISONOUS}, 2));
 		this.elements.add(new MonsterActionCard(24, "Poisonous Gas", MonsterTypeEnum.PLANT, new ActionTypeEnum[]{ActionTypeEnum.RANGE, ActionTypeEnum.POISONOUS}, 3));
+	}
 
+	@Override
+	public List<MonsterActionCard> findAll() {
 		return this.elements;
 	}
 
 	@Override
 	public MonsterActionCard findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.elements.stream()
+				.filter(m -> m.getId() == id)
+				.findFirst()
+				.orElse(null);
+	}
+
+	@Override
+	public List<MonsterActionCard> findBySelector(ActionTypeEnum selector) {
+		return this.elements.stream()
+				.filter(a -> Arrays.binarySearch(a.getTypes(), selector) >= 0)
+				.collect(Collectors.toList());
 	}
 
 }
