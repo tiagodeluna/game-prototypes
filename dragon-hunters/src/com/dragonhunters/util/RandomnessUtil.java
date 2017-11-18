@@ -1,20 +1,17 @@
-package com.dragonhunters.service;
+package com.dragonhunters.util;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-import org.springframework.stereotype.Service;
-
 import com.dragonhunters.model.card.Card;
 
-@Service
-public class RandomnessService {
+public class RandomnessUtil {
 
-	private RandomnessService() {
+	private RandomnessUtil() {
 		super();
 	}
 	
-	public int rollDice() {
+	public static int rollDice() {
 		int dice = ThreadLocalRandom.current().nextInt(1, 7);
 		
 		switch(dice) {
@@ -34,12 +31,10 @@ public class RandomnessService {
 		
 	}
 	
-	public Card selectCard(List cards) {
+	@SuppressWarnings("rawtypes")
+	public static Card drawCard(List cards) {
 		int index = ThreadLocalRandom.current().nextInt(0, cards.size());
 		return (Card) cards.remove(index);
 	}
 	
-	public void xys(Object o) {
-		
-	}
 }

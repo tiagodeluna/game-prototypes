@@ -1,7 +1,6 @@
 package com.dragonhunters.infrastructure;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,7 +11,7 @@ import com.dragonhunters.model.card.monster.MonsterActionCard;
 import com.dragonhunters.model.card.monster.MonsterTypeEnum;
 
 @Component
-public class MonsterActionRepository implements Repository<MonsterActionCard, ActionTypeEnum> {
+public class MonsterActionRepository implements Repository<MonsterActionCard, MonsterTypeEnum> {
 
 	private List<MonsterActionCard> elements;
 	
@@ -63,9 +62,9 @@ public class MonsterActionRepository implements Repository<MonsterActionCard, Ac
 	}
 
 	@Override
-	public List<MonsterActionCard> findBySelector(ActionTypeEnum selector) {
+	public List<MonsterActionCard> findBySelector(MonsterTypeEnum selector) {
 		return this.elements.stream()
-				.filter(a -> Arrays.binarySearch(a.getTypes(), selector) >= 0)
+				.filter(a -> a.getMonsterType().equals(selector))
 				.collect(Collectors.toList());
 	}
 
