@@ -1,4 +1,4 @@
-package com.dragonhunters.model;
+package com.dragonhunters.model.gameplay;
 
 public enum CommandEnum {
 	PLAY_CARD(1, "play %s"),

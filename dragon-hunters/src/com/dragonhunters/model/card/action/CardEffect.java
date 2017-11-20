@@ -1,9 +1,9 @@
 package com.dragonhunters.model.card.action;
 
-import com.dragonhunters.model.Character;
+import com.dragonhunters.model.character.PlayerCharacter;
 
 @FunctionalInterface
 public interface CardEffect {
 
-	public void activate(Character character);
+	public void activate(PlayerCharacter character);
 }

@@ -3,6 +3,7 @@ package com.dragonhunters.model.gameplay;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.dragonhunters.model.character.PlayerCharacter;
 import com.dragonhunters.service.MonsterSelectorService;
 
 @Component
@@ -18,15 +19,16 @@ public class Gameplay {
 	}
 	
 	public void start() {
+		//Select the monsters available to be hunted
 		this.monsterSelectorService.select(gameSetup);
 		
-		System.out.println(gameSetup.getAnimals());
-		System.out.println(gameSetup.getBeasts());
-		System.out.println(gameSetup.getDragon());
-		System.out.println(gameSetup.getDragon().getMovements());
+		//Instantiate player's character
+		gameSetup.setPlayerCharacter(new PlayerCharacter("TARKUS", 5, 5, 3));
+		System.out.println(gameSetup.getPlayerCharacter().toString());
 	}
 	
 	public void play() {
+		//TODO Display menu
 		
 	}
 }
