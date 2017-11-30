@@ -19,12 +19,16 @@ public class Gameplay {
 	}
 	
 	public void start() {
+		//Instantiate player's character
+		gameSetup.setPlayerCharacter(new PlayerCharacter("GILLIAN", 5, 3, 3));
+		System.out.println(gameSetup.getPlayerCharacter().toString());
+		
+		//TODO Get player's initial deck and equipment
+		
 		//Select the monsters available to be hunted
 		this.monsterSelectorService.select(gameSetup);
 		
-		//Instantiate player's character
-		gameSetup.setPlayerCharacter(new PlayerCharacter("TARKUS", 5, 5, 3));
-		System.out.println(gameSetup.getPlayerCharacter().toString());
+
 	}
 	
 	public void play() {

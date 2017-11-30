@@ -46,6 +46,7 @@ public class MonsterSelectorService implements SelectorService<GameSetup> {
 				break;
 			}
 			
+			//Select monster's actions
 			this.actionSelectorService.select(monster);
 			selected.add(monster);
 		}

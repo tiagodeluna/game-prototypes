@@ -2,14 +2,14 @@ package com.dragonhunters.model.card.action;
 
 public enum ActionTypeEnum {
 	/* Ofensive actions */
-	GENERIC,
+	GENERIC_ATK,
 	CONTUSIVE,
-	CUTTING,
-	PIERCING,
+	CUTTING_PIERCING,
 	RANGE,
-	/* Defensive actions */
-	BLOCKING,
-	DODGE,
+	/* Defensive/Neutral actions */
+	DEFENSE,
+//	BLOCKING,
+//	DODGE,
 	MOVEMENT,
 	/* Special Effects */
 	PARALYZING,

@@ -1,7 +1,5 @@
 package com.dragonhunters.model.card.monster;
 
-import java.util.List;
-
 import com.dragonhunters.model.card.action.ActionCard;
 import com.dragonhunters.model.card.action.ActionTypeEnum;
 import com.dragonhunters.model.card.action.CardEffect;
@@ -10,14 +8,14 @@ public class MonsterActionCard extends ActionCard {
 
 	private MonsterTypeEnum monsterType;
 	
-	public MonsterActionCard(long id, String name, MonsterTypeEnum monsterType, ActionTypeEnum[] actionTypes, int bonus,
-			List<ActionTypeEnum> prerequisites, CardEffect effect) {
-		super(id, name, actionTypes, bonus, prerequisites, effect);
+	public MonsterActionCard(long id, String name, MonsterTypeEnum monsterType, ActionTypeEnum[] actionTypes, 
+			int bonus, CardEffect effect) {
+		super(id, name, actionTypes, bonus, effect);
 		this.monsterType = monsterType;
 	}
 
 	public MonsterActionCard(long id, String name, MonsterTypeEnum monsterType, ActionTypeEnum[] actionTypes, int bonus) {
-		super(id, name, actionTypes, bonus);
+		super(id, name, actionTypes, bonus, null);
 		this.monsterType = monsterType;
 	}
 
