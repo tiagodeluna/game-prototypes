@@ -15,4 +15,5 @@ public enum ActionTypeEnum {
 	PARALYZING,
 	POISONOUS,
 	ELEMENTAL,
+	NEUTRAL,
 }

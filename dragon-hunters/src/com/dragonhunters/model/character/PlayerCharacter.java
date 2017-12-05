@@ -3,6 +3,7 @@ package com.dragonhunters.model.character;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.dragonhunters.model.card.action.ActionCard;
 import com.dragonhunters.model.card.equipment.EquipmentCard;
 import com.dragonhunters.model.resource.Resource;
 
@@ -34,6 +35,8 @@ public class PlayerCharacter {
 	//Items
 	private List<Resource> bag;
 	private List<EquipmentCard> equipments;
+	//Actions
+	private List<ActionCard> actions;
 	
 	public PlayerCharacter() {
 		super();
@@ -43,6 +46,7 @@ public class PlayerCharacter {
 		this.level = 1;
 		this.bag = new ArrayList<>();
 		this.equipments = new ArrayList<>();
+		this.actions = new ArrayList<>();
 	}
 
 	public PlayerCharacter(String name, int bagLimit, int braveryLimit, int hpLimit) {

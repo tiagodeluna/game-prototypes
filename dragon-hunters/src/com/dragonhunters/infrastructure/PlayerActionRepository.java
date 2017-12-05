@@ -2,11 +2,15 @@ package com.dragonhunters.infrastructure;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Component;
 
 import com.dragonhunters.model.card.action.ActionCard;
 import com.dragonhunters.model.card.action.ActionTypeEnum;
 
-public class PlayerActionRepository implements Repository<ActionCard, ActionTypeEnum> {
+@Component
+public class PlayerActionRepository implements Repository<ActionCard, Boolean> {
 
 	private List<ActionCard> elements;
 	
@@ -38,9 +42,10 @@ public class PlayerActionRepository implements Repository<ActionCard, ActionType
 	}
 
 	@Override
-	public List<ActionCard> findBySelector(ActionTypeEnum selector) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ActionCard> findBySelector(Boolean selector) {
+		return this.elements.stream()
+				.filter(a -> a.isInitialAction() == selector)
+				.collect(Collectors.toList());
 	}
 
 }
