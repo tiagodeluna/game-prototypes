@@ -65,7 +65,17 @@ public class PlayerCharacter {
 		sb.append(String.format("|| HUNTER ||%n"));
 		sb.append(String.format("| %s, LVL %s%n", this.name, this.level));
 		sb.append(String.format("| ATK %s DEF %s%n", this.attack, this.defense));
-		sb.append(String.format("| HP  %s BRV %s%n", this.hp, this.bravery));
+		sb.append(String.format("| HP  %s BRV %s", this.hp, this.bravery));
+		
+		sb.append("\n|| Actions ||\n");		
+		for(ActionCard action : this.actions) {
+			sb.append(String.format("| %s ", action.getName()));
+		}
+
+		sb.append("\n|| Equipment ||\n");		
+		for(EquipmentCard equip : this.equipments) {
+			sb.append(String.format("| %s ", equip.getName()));
+		}
 		return sb.toString();
 	}
 	

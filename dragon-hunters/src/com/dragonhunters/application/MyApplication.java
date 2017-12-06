@@ -20,6 +20,7 @@ public class MyApplication {
         Gameplay game = context.getBean(Gameplay.class);
         game.start();
         game.play();
+        System.exit(-1);
     }
     
 }
